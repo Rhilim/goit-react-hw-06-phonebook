@@ -10,12 +10,13 @@ const contactSlice = createSlice({
     deleteContact: (state, action) => {
       return state.filter(contact => contact.id !== action.payload);
     },
-    deleteAllContacts: (state) => {
+    deleteAllContacts: state => {
       return [];
     },
   },
 });
 
-export const { addContact, deleteContact, deleteAllContacts } = contactSlice.actions;
+export const { addContact, deleteContact, deleteAllContacts } =
+  contactSlice.actions;
 
 export default contactSlice.reducer;

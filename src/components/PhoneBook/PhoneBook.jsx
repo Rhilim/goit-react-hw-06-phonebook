@@ -12,27 +12,28 @@ import {
 } from 'components/PhoneBook/PhoneBook.styled';
 import { AiOutlineDelete, AiOutlinePlusCircle } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, deleteAllContacts} from 'redux/contactSlice';
+import { addContact, deleteAllContacts } from 'redux/contactSlice';
 import toast, { Toaster } from 'react-hot-toast';
 
 export const PhoneBook = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts); // Get the contacts state from the Redux store
-  // const filter = useSelector(state => state.filter); // Get the filter state from the Redux store
+  const contacts = useSelector(state => state.contacts);
 
   const handleReset = () => {
-    dispatch(deleteAllContacts()); // Dispatch the action to delete all contacts
+    dispatch(deleteAllContacts());
   };
 
   const handleAddContact = newName => {
-    const findContact = contacts.find(item => item.name.toLowerCase() === newName.name.toLowerCase());
+    const findContact = contacts.find(
+      item => item.name.toLowerCase() === newName.name.toLowerCase()
+    );
     if (findContact) {
       return toast.error(`${newName.name} is already in the phonebook`, {
         duration: 4000,
         position: 'top-center',
       });
     } else {
-      dispatch(addContact({ ...newName, id: nanoid() })); // Dispatch the action to add a contact
+      dispatch(addContact({ ...newName, id: nanoid() }));
     }
   };
 
