@@ -1,6 +1,6 @@
-import { useEffect} from 'react';
+// import { useEffect} from 'react';
 import  { Toaster } from 'react-hot-toast';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { Contacts } from './Contacts/Contacts';
 import { Filter } from './Filter/Filter';
 import { PhoneBook } from './PhoneBook/PhoneBook';
@@ -9,12 +9,12 @@ import { Wrapper } from './Wrapper';
 
 export const App = () => {
 
-  const contacts = useSelector(state => state.contacts);
+  // const contacts = useSelector(state => state.contacts);
 
 
-  useEffect(() => {
-    localStorage.setItem('phone-contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('phone-contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
   return (
     <Wrapper>
