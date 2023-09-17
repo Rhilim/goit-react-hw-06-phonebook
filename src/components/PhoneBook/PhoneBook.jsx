@@ -12,12 +12,12 @@ import {
 } from 'components/PhoneBook/PhoneBook.styled';
 import { AiOutlineDelete, AiOutlinePlusCircle } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, deleteAllContacts } from 'redux/contactSlice';
+import { addContact, deleteAllContacts, getContacts } from 'redux/contactSlice';
 import toast, { Toaster } from 'react-hot-toast';
 
 export const PhoneBook = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(getContacts);
 
   const handleReset = () => {
     dispatch(deleteAllContacts());
