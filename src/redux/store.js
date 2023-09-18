@@ -10,11 +10,10 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import contactReducer from './contactSlice';
+import { contactReducer } from './contactSlice';
+import { filterReducer } from './filterSlice';
 
-import filterReducer from './filterSlice';
-
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   filter: filterReducer,
   contacts: contactReducer,
 });
@@ -28,12 +27,12 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-  getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export const persistor = persistStore(store);
